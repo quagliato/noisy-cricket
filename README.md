@@ -9,6 +9,7 @@ A simple PHP framework.
 * DAO
 * Friendly URLs
 * Notifications
+* DataBinding
 * User management and subscription
 * File management
 
