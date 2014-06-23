@@ -1,0 +1,370 @@
+body{
+	background-color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif; 
+    padding-bottom: 100px;
+    position: relative;
+}
+
+fieldset{
+    border: none;
+}
+
+ul li{
+    list-style: none;
+}
+
+a,
+a:hover,
+a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+
+.wrapper{
+    margin: 0 auto;
+    width: 960px;
+}
+
+.fr{
+    float: right;
+}
+
+.tac{
+    text-align: center;
+}
+
+.bn{
+    border: none;
+}
+
+label{
+    color: #666666;
+    display: inline-block;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+input,
+select,
+textarea{
+    color: #000000;
+    font-size: 20px;
+    height: 45px;
+    padding: 5px;
+    vertical-align: middle;
+    width: 500px;
+}
+
+textarea{
+    height: 120px;
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+    margin: 0 20px 0 0;
+    width: auto;
+}
+
+input[type="file"]{
+    padding: 0 5px 0 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=number],
+select,
+textarea{
+    margin: 0 0 20px 0;
+}
+
+input[type=submit]{
+    /*background-color: #8DC63F; Antigo verde*/
+    background-color: #2B243C;
+    border: none;
+    border-radius: 2px 2px;
+    box-shadow: 1px 1px 4px #333333;
+    -moz-box-shadow: 1px 1px 4px #333333;
+    -webkit-box-shadow: 1px 1px 4px #333333;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px 0 20px 0;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 130px;
+}
+
+hr{
+    border-top: 1px solid #666666;
+    height: 1px;
+    margin: 20px 0 20px 0;
+    width: 100%;
+}
+
+table{
+    border: none;
+    margin: 10px 0 0 0;
+    table-layout: fixed;
+    text-align: left;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+table thead{
+    font-weight: bold;
+}
+
+table td,
+table th{
+    border: solid 1px #000000;
+    padding: 0 5px 0 5px;
+}
+
+table .center{
+    text-align: center;
+}
+
+table .left{
+    text-align: left;
+}
+
+table .right{
+    text-align: right;
+}
+
+/******************************************************************************/
+/* NOTIFICATIONS */
+
+.notification {  
+    border-top: 3px solid #000000;
+    bottom: 0;
+    color: #000000;
+    display: none;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 0 10px;
+    position: fixed;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 9999;
+}
+
+.error {
+    background-color: #FE938F;
+    border-color: #FF0000;
+}
+
+.message {
+    background-color: #98F678;
+    border-color: #0C6C03;
+}
+
+#notification_content{
+    display: inline-block;
+    max-width: 960px;
+}
+
+#notification_content a,
+#notification_content a:hover,
+#notification_content a:visited{
+    text-decoration: underline
+}
+
+#close_btn {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    right: 10px;
+    position: absolute;
+}
+
+/******************************************************************************/
+/* HEADER */
+header #topline{
+    background-color: #D6233B;
+    border-bottom: 3px solid #312D44;
+    color: #ffffff;
+    font-size: 16px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 100%;
+}
+
+header #topline .side{
+    display: inline-block;
+    vertical-align: middle;
+    width: 49%;
+}
+
+header #topline h1{
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header #topline #info{
+    color: #FFFFFF;
+}
+
+header #topline #info a{
+    color: #ffffff;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+header #topbanner{
+    background-color: #cccccc;
+    color: #000000;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+section a,
+section a:hover,
+section a:visited{
+    color: #D6233B;
+    text-decoration: none;
+}
+
+section a:hover{
+    text-decoration: underline;
+}
+
+section p.inscrevase,
+section p.isencao{
+    margin: 10px 0 0 0;
+}
+
+section ul.menu li{
+    display: inline-block;
+    margin: 20px 20px 20px 0;
+}
+
+section a.dashboard_btn,
+section a.dashboard_btn:hover,
+section a.dashboard_btn:visited{
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 2px #333333;
+    -moz-box-shadow: 2px 2px 2px #333333;
+    -webkit-box-shadow: 2px 2px 2px #333333;
+    border-radius: 10px;
+    display: inline-block;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    text-decoration: none;
+    width: 200px;
+    vertical-align: middle;
+}
+
+section a.dashboard_btn:hover{
+    box-shadow: inset 1px 1px 2px #333333;
+    -moz-box-shadow: inset 1px 1px 2px #333333;
+    -webkit-box-shadow: inset 1px 1px 2px #333333;
+    text-decoration: none;
+}
+
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6{
+    font-weight: bold;
+}
+
+section h1{
+    color: #D6233B;
+    font-size: 32px;
+    margin: 20px 0 20px 0;
+}
+
+section h2{
+    color: #312D44;;
+    font-size: 24px;
+    margin: 10px 0 0 0;
+}
+
+section h3{
+    color: #222222;
+    font-size: 16px;
+    margin: 10px 0 0 0
+}
+
+section h4{
+    color: #D6233B;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+}
+
+section h5{
+    color: #D6233B;
+    font-size: 12px;
+    margin: 10px 0 0 0;
+}
+
+section h6{
+    color: #D6233B;
+    font-size: 10px;
+    margin: 10px 0 0 0;
+}
+
+section ul#package_selection{
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+section ul#package_selection li{
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+}
+
+section ul#package_selection li input{
+    height: 16px;
+    line-height: 16px;
+}
+section ul#package_selection li label{
+    color: #000000;
+    display: inline-block;
+    text-transform: none;
+    width: auto;
+}
+
+section #login{
+    text-align: left;
+    margin: 0 auto;
+    width: 400px;
+}
+
+section #login input{
+    margin: 0 0 20px 0;
+    width: 100%;
+}
+
+footer{
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    bottom: 0;
+    font-size: 10px;
+    margin: 0 15px 0 0;
+    padding: 5px;
+    right: 0;
+    position: fixed;
+    text-align: right;
+}
+
+.note{
+    font-size: 11px;
+    margin-top: 5px;
+}
