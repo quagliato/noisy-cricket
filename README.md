@@ -32,4 +32,11 @@ is the file that it should request.
 * It can work with other DB engines, but I've only tested with MySQL
 * No classloader YET
 
+### To Implement
+* Authenticated email sending
+* VO's generic interface
+* Dynamic view/form rendering
+* Basic color customizing
+* Server-side validation
+
 Want to discuss about it? eduardo@quagliato.me
