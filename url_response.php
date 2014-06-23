@@ -21,15 +21,7 @@
             $found = false;
             foreach ($urlpatterns as $friendly => $actual) {
                 $friendly = APP_DIR.$friendly;
-                /*
-                echo "a) ".APPLICATION_DIR."<br />";
-                echo "b) ".REQUEST_URI."<br />";
-                echo "c) ".$request_uri_no_param."<br />";
-                echo "d) ".$friendly."<br />";
-                echo "e) ".$actual."<br />";
-                */
 
-                // if (preg_match("@^{$friendly}$@", REQUEST_URI, $_GET)) {
                 if ($request_uri_no_param == $friendly) {
                     $found = true;
                     include_once($actual);
