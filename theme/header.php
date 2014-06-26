@@ -79,7 +79,6 @@
                             ?>
                             <p><?=$user->get('email')?></p>
                             <p class="fr" style="line-height:15px; vertical-align:top;">
-                                <a href="<?=APP_URL?>/faq">FAQ</a>&nbsp;&nbsp;&nbsp;
                                 <a href="<?=APP_URL?>/usuario/atualizar">Alterar Cadastro</a>&nbsp;&nbsp;&nbsp;
                                 <a href="<?=APP_URL?>/logout">Sair</a>
                             </p>
