@@ -27,6 +27,23 @@ Set up your URLs by adding array entries on $custom\_urlpatterns inside
 "custom\_urls.php" file. The key of the entry is the friendly-url and the value
 is the file that it should request.
 
+### DB
+Every column of the table in the DB should have a property using the same name
+inside the VO class. The VO class should have a constant with the tablename,
+a array "type" which has the datatype for every property of the VO
+($type['property\_name'] = 'type'; use 'int', 'str' or 'date'). Some other 
+methods should be implemented. Use VO Usuario as example.
+
+### DataBinding
+For databinding, set attribute "name" of the inputs using the pattern
+"VOName-property". The JS function bindData() will bind all form's inputs (which
+it should get as a parameter) and return it as an array.
+On server-side, use the method bind(str $classname, $\_POST) from the class
+DataBinding which creates a new VO and binds the values on it.
+
+### Examples
+Use VO "Usuario" and user subscription as an example.
+
 ## Notes
 * Created for Apache HTTP Server 2
 * PHP >= 5.3
@@ -39,5 +56,7 @@ is the file that it should request.
 * Dynamic view/form rendering
 * Basic color customizing
 * Server-side validation
+* Reflection on persistence
+* Interface for VOs
 
 Want to discuss about it? eduardo@quagliato.me
