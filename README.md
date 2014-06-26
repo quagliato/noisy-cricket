@@ -29,8 +29,8 @@ is the file that it should request.
 
 ## Notes
 * Created for Apache HTTP Server 2
-* PHP 5.3 or higher
-* It can work with other DB engines, but I've only tested with MySQL
+* PHP >= 5.3
+* Tested only in MySQL, but it can work with other SQL DBs
 * No classloader YET
 
 ### To Implement
