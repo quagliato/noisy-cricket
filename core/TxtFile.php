@@ -3,8 +3,8 @@
     class TxtFile {
 
     private $filename;
-    private $content;
-    private $loadedContent;
+    private $buffer;
+    private $writtenContent;
 
     public function __construct($filename) {
         if (!isset($filename) || is_null($filename) || $filename == "") {
@@ -29,90 +29,83 @@
         return -1;
     }
 
+    public function getBufferContent() {
+        return $this->buffer;
+    }
+
+    public function getWrittenContent() {
+        return $this->loadContent();
+    }
+
     public function getContent() {
-        if ((!isset($this->content) || 
-            is_null($this->content) || 
-            sizeof($this->content) == 0) &&
-            $this->fileExists()) {
+        $aux = $this->buffer;
+        if ($this->fileExists() && $this->getFileSize() > -1) {
             $this->loadContent();
+            $aux = array_merge($this->writtenContent, $this->buffer);
         }
-        
-        return $this->content;
+
+        return $aux;
     }
 
     private function loadContent() {
-        if (!is_array($this->loadedContent)) {
-            $this->loadedContent = array();
-        }
+        $this->writtenContent = array();
 
-        $handle = fopen($this->filename, "r");
-        if ($handle) {
-            while (($line = fgets($handle)) != false) {
-                $this->loadedContent[] = $line;        
+        if ($this->fileExists()) {
+            $handle = fopen($this->filename, "r");
+            if ($handle) {
+                while (($line = fgets($handle)) != false) {
+                    $this->writtenContent[] = $line;        
+                }
+            } else {
+                throw new Exception("TxtFile could not load file content.");
             }
-        } else {
-            throw new Exception("TxtFile could not load file content.");
+            fclose($handle);
         }
-        fclose($handle);
+            
+        return $this->writtenContent;
     }
 
     public function appendNewLine($string) {
-        if (!is_array($this->content) || is_null($this->content)) {
-            $this->content = array();
+        if (sizeof($this->buffer) > 0) {
+            $string = "\n".$string;
         }
+        $this->appendNewString($string);
+    }
 
-        $this->content[] = $string;
+    public function appendNewString($string) {
+        if (!is_array($this->buffer) || is_null($this->buffer)) {
+            $this->buffer = array();
+        }
+        
+        $this->buffer[] = $string;
     }
 
     public function loadlessAppendNewLine($string) {
-        if ($this->fileExists()) {
-            file_put_contents($this->filename, $string."\n", FILE_APPEND);
+        if ($this->fileExists() && $this->getFileSize() > -1) {
+            $string = "\n".$string;
         }
+
+        file_put_contents($this->filename, $string, FILE_APPEND);
     }
 
     public function write($flag) {
-        $return = true;
-        
-        switch ($flag) {
-            case 1:
-                $return = mergeContent();
-            case 0: 
-                $return = writeContent();
-                break;
-        }
-
-        return $return;
+        return $this->writeBuffer($flag);
     }
 
-    private function writeContent() {
-        if (!is_array($this->content) || is_null($this->content) || sizeof($this->content) == 0) {
+    private function writeBuffer($flag) {
+        if (!is_array($this->buffer) || is_null($this->buffer) || sizeof($this->buffer) == 0) {
             return false;
         }
 
-        unline($this->filename);
-
-        foreach ($this->content as $line) {
-            file_put_contents($this->filename, $line."\n", FILE_APPEND);
+        if ($flag == 0) {
+            unlink($this->filename);
         }
 
-        return true;
-    }
-
-    private function mergeContent() {
-        if (!is_array($this->loadedContent) || is_null($this->loadedContent) || sizeof($this->loadedContent) == 0) {
-            return false;
+        foreach ($this->buffer as $line) {
+            file_put_contents($this->filename, $line, FILE_APPEND);
         }
 
-        $aux = $this->content;
-        $this->content = array();
-
-        foreach ($this->loadedContent as $line) {
-            $this->content[] = $line;
-        }
-
-        foreach ($aux as $line) {
-            $this->content[] = $line;
-        }
+        $this->buffer = array();
 
         return true;
     }
