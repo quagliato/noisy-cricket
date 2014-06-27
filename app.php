@@ -5,6 +5,7 @@
 	include_once("core/Structure.php");
 	include_once("core/DataBinder.php");
 	include_once("core/TxtFile.php");
+	include_once("core/LogEngine.php");
 	
     //include_once("classes/GenericClass.php");
     include_once("vo/Blacklist.php");
