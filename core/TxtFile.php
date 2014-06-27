@@ -66,7 +66,7 @@
     }
 
     public function appendNewLine($string) {
-        if (sizeof($this->buffer) > 0) {
+        if (sizeof($this->buffer) > 0 || ($this->fileExists() && $this->getFileSize() > -1)) {
             $string = "\n".$string;
         }
         $this->appendNewString($string);
@@ -108,6 +108,47 @@
         $this->buffer = array();
 
         return true;
+    }
+
+    // If there's written file, clean the buffer and write "" on file.
+    // If there isnt' written file, only clean the buffer.
+    public function clearFile() {
+        if ($this->fileExists() && $this->getFileSize() > -1) {
+            $this->buffer = array();
+            $this->appendNewLine("");
+            $this->write(0);
+        }
+
+        $this->buffer = array();
+    }
+
+    // Non-written buffer will not be copied
+    public function copyFile($newFilename) {
+        if ($this->fileExists() && $this->getFileSize() > -1) {
+            return copy($this->filename, $newFilename);
+        }
+
+        return false;
+    }
+
+    // Write what is in the buffer and move after that
+    public function moveFile($newFilename) {
+        var_dump($this->buffer);
+        if (isset($this->buffer) && !is_null($this->buffer) && sizeof($this->buffer) > 0) {
+            $writeResult = $this->write(1);
+            if (!$writeResult) {
+                return $writeResult;
+            }
+        }
+
+        if ($this->fileExists() && $this->getFileSize() > -1) {
+            if ($this->copyFile($newFilename)) {
+                unlink($this->filename);
+                return new TxtFile($newFilename);
+            }
+        }
+
+        return false;
     }
 }
 
