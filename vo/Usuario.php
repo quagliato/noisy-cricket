@@ -1,38 +1,38 @@
 <?php
 
-class Usuario {
+class Usuario extends GenericClass{
 
-	const sys_tablename = "usuario";
+	protected static $sys_tablename = "usuario";
 
-	private $id;
-	private $nome;
-    private $cpf;
-    private $data_nasc;
-    private $deficiencia;
-	private $senha;
-	private $email;
-    private $telefone_residencial;
-    private $telefone_celular;
-    private $inst_ens;
-    private $curso;
-    private $periodo;
-    private $end_logradouro;
-    private $end_numero;
-    private $end_complemento;
-    private $end_bairro;
-    private $end_cidade;
-    private $end_estado;
-    private $end_cep;
-    private $responsavel_nome;
-    private $responsavel_telefone;
-    private $alergias;
-    private $medicacao_continua;
-    private $plano_saude;
-	private $dt_registro;
-	private $dt_ultimo_login;
-	private $privilegio;
+	protected $id;
+	protected $nome;
+    protected $cpf;
+    protected $data_nasc;
+    protected $deficiencia;
+	protected $senha;
+	protected $email;
+    protected $telefone_residencial;
+    protected $telefone_celular;
+    protected $inst_ens;
+    protected $curso;
+    protected $periodo;
+    protected $end_logradouro;
+    protected $end_numero;
+    protected $end_complemento;
+    protected $end_bairro;
+    protected $end_cidade;
+    protected $end_estado;
+    protected $end_cep;
+    protected $responsavel_nome;
+    protected $responsavel_telefone;
+    protected $alergias;
+    protected $medicacao_continua;
+    protected $plano_saude;
+	protected $dt_registro;
+	protected $dt_ultimo_login;
+	protected $privilegio;
 	
-	private $sys_type = array(
+	protected $sys_type = array(
 		'id' => 'int',
 		'nome' => 'str',
 		'cpf' => 'str',
@@ -62,27 +62,6 @@ class Usuario {
         'privilegio' => 'str'
 	);
 
-    public function set($prop, $value) {
-		$this->$prop = $value;
-	}
-	
-	public function get($prop) {
-		return $this->$prop;
-	}
-	
-	public function type($prop) {
-		if (array_key_exists($prop, $this->sys_type))
-			return $this->sys_type[$prop];
-		return 'none';
-	}
-	
-	public function props() {
-		return get_object_vars($this);
-	}
-	
-	public static function tablename() {
-		return self::sys_tablename;
-	}
 }
 
 ?>
