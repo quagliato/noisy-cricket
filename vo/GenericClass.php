@@ -3,16 +3,28 @@
 class GenericClass {
 
     public function set($prop, $value) {
+        if (!property_exists($this, $prop)) {
+            throw new Exception("The property $prop does not exist on class $this.");
+        }
 		$this->$prop = $value;
 	}
 	
 	public function get($prop) {
+        if (!property_exists($this, $prop)) {
+            throw new Exception("The property $prop does not exist on class $this.");
+        }
 		return $this->$prop;
 	}
 	
 	public function type($prop) {
-		if (array_key_exists($prop, $this->sys_type))
-			return $this->sys_type[$prop];
+        $type_prop = "sys_type";
+        if (!property_exists($this, $type_prop)) {
+            throw new Exception ("The property $type_prop does not exist on class $this.");
+        }
+
+		if (array_key_exists($prop, $this->$type_prop)) {
+			return $this->$type_prop[$prop];
+        }
 		return 'none';
 	}
 	
@@ -21,8 +33,9 @@ class GenericClass {
 	}
 	
 	public static function tablename() {
-		return self::sys_tablename;
+        return static::$sys_tablename;
 	}
+
 }
 
 ?>
