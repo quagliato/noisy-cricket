@@ -52,11 +52,9 @@ Use VO "Usuario" and user subscription as an example.
 
 ### To Implement
 * Authenticated email sending
-* VO's generic interface
 * Dynamic view/form rendering
 * Basic color customizing
 * Server-side validation
 * Reflection on persistence
-* Interface for VOs
 
 Want to discuss about it? eduardo@quagliato.me
