@@ -20,16 +20,10 @@
 
     $blacklist_dao = new BlacklistDAO;
 
-    if ($usuario_dao->getUserByCPF($usuario->get('cpf'))) {
+    if ($blacklist_dao->isBlacklisted($usuario->get('email'))) {
         $return[] = array(
             "Action" => "Error",
-            "Error" => "Seu CPF já está cadastrado em nosso sistema."
-        );
-    }
-    else if ($blacklist_dao->isBlacklisted($usuario->get('email'))) {
-        $return[] = array(
-            "Action" => "Error",
-            "Error" => "Você foi contemplado em edital. Por favor, aguarda instruções da organização."
+            "Error" => "Blacklist."
         );
     } else {
 
@@ -46,37 +40,26 @@
                 $usuario->set('privilegio', 'ADM');
             }
 
-            $cpf = $usuario->get('cpf');
-            $cpf = str_replace('.', '', $cpf);
-            $cpf = str_replace('-', '', $cpf);
-
-            if (!Validation::validateCPF($usuario->get('cpf'))) {
+            $result = $usuario_dao->insert($usuario);
+            if (!$result) {
                 $return[] = array(
                     "Action" => "Error",
-                    "Error" => "Por favor, insira um CPF válido."
+                    "Error" => "Problemas ao realizar seu cadastro. Por favor, tente novamente."
                 );
             } else {
-                $result = $usuario_dao->insert($usuario);
-                if (!$result) {
-                    $return[] = array(
-                        "Action" => "Error",
-                        "Error" => "Problemas ao realizar seu cadastro. Por favor, tente novamente."
-                    );
-                } else {
-                    $user_id = $usuario_dao->select("Usuario",array('id'),"email = '".$usuario->get('email')."'");
-                    $user_id = $user_id->get('id');
-                    $_SESSION['user_id'] = $user_id;
+                $user_id = $usuario_dao->select("Usuario",array('id'),"email = '".$usuario->get('email')."'");
+                $user_id = $user_id->get('id');
+                $_SESSION['user_id'] = $user_id;
 
-                    $return[] = array(
-                        "Action" => "Message",
-                        "Message" => "Parabéns, voce esta cadastrado!"
-                    );
-                    
-                    $return[] = array(
-                        "Action" => "Redir",
-                        "Redir" => "/dashboard"
-                    );
-                }
+                $return[] = array(
+                    "Action" => "Message",
+                    "Message" => "Parabéns, voce esta cadastrado!"
+                );
+                
+                $return[] = array(
+                    "Action" => "Redir",
+                    "Redir" => "/dashboard"
+                );
             }
         }
     }

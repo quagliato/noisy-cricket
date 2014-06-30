@@ -22,8 +22,9 @@ class GenericClass {
             throw new Exception ("The property $type_prop does not exist on class $this.");
         }
 
-		if (array_key_exists($prop, $this->$type_prop)) {
-			return $this->$type_prop[$prop];
+        $types = $this->$type_prop;
+		if (array_key_exists($prop, $types)) {
+			return $types[$prop];
         }
 		return 'none';
 	}
