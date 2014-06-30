@@ -7,7 +7,7 @@
 	include_once("core/TxtFile.php");
 	include_once("core/LogEngine.php");
 	
-    //include_once("classes/GenericClass.php");
+    include_once("classes/GenericClass.php");
     include_once("vo/Blacklist.php");
     include_once("vo/Request.php");
 	include_once("vo/Usuario.php");
