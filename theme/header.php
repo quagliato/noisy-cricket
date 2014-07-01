@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_css/reset.css" />
         <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_css/style.css" />
-        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_libs/jquery-ui/jquery-ui-1.10.3.custom.min.js" />
+        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_libs/jquery-ui/jquery-ui-1.10.3.custom.min.css" />
 
         <!-- Third-party libs -->
         <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery-2.0.3.min.js"></script>
