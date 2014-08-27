@@ -23,7 +23,9 @@ class Structure {
     }
     
     public static function verifySession() {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
         if (!isset($_SESSION['user_id'])) {
             Structure::redirWithMessage("Usuario nao logado.", '/'); //TODO: Adicionar acento
