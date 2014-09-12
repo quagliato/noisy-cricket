@@ -35,9 +35,19 @@ function bindData(form) {
 
         if ($(this).is('input')) { // if it's an input
             if (accepted_types.indexOf($(this).attr('type')) > -1) {
-                values[name] = $(this).val();
+                if ($(this).attr('type') == "checkbox") { // checkbox has an special treatment
+                    if ($(this).is(':checked')) { // get its value only if it's checked
+                        var checkboxes = new Array();
+                        if (values[name] != null) { // already exists an array of values for this name
+                            checkboxes = values[name];
+                        }
+                        checkboxes[checkboxes.length] = $(this).attr("value"); // adds the new value to the array
+                        values[name] = checkboxes; // add the array with the new value into the values array
+                    }
+                } else {
+                    values[name] = $(this).val();
+                }
             }
-
         } else if($(this).is('select')) { // if it's a select
 
             $(this).children().each(function(){
