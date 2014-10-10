@@ -40,16 +40,20 @@ class Structure {
         }
     }
 
-    public static function verifyAdminSession() {
+    public static function verifySpecificRole($role) {
         $usuario = Structure::verifySession();
 
-        if ($usuario->get('privilegio') == 'ADM') {
+        if ($usuario->get('privilegio') == $role) {
             return $usuario;
         }
 
-        Structure::redirWithMessage("Area restrita apenas para administradores.", "/"); //TODO: Adicionar acento
+        Structure::redirWithMessage("Area restrita.", "/"); //TODO: Adicionar acento
     }
 
+
+    public static function verifyAdminSession() {
+        return Structure::verifySpecificRole('ADM');
+    }
     
     public static function header() {
         include_once("theme/header.php");
