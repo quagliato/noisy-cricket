@@ -2,15 +2,15 @@
 
     $return = array();
 
-	session_start();
-	if(isset($_SESSION['user_id'])) {
-		unset($_SESSION['user_id']);
+    session_start();
+    if(isset($_SESSION['user_id'])) {
+        unset($_SESSION['user_id']);
         $return[] = array(
             "Action" => "Error",
             "Error" => "Já existe usuário logado. Tente novamente, por favor. Por favor, tente novamente."
         );
 
-	}
+    }
 
     $usuario_dao = new UsuarioDAO;
     $usuario = DataBinder::bind($_POST, 'Usuario');
@@ -55,7 +55,7 @@
                     "Action" => "Message",
                     "Message" => "Parabéns, voce esta cadastrado!"
                 );
-                
+
                 $return[] = array(
                     "Action" => "Redir",
                     "Redir" => "/dashboard"
@@ -65,5 +65,4 @@
     }
 
     echo json_encode($return);
-	
 ?>

@@ -3,9 +3,9 @@
     include_once("config.php");
     include_once("app.php");
 
-	define('REQUEST_URI', $_SERVER['REQUEST_URI']);
+    define('REQUEST_URI', $_SERVER['REQUEST_URI']);
 
-	function url_response($urlpatterns) {
+    function url_response($urlpatterns) {
         $dbcon = new DBStuff;
 
         if (!$dbcon->testDB()) {
@@ -31,7 +31,6 @@
             if (!$found)
                 include_once("theme/404.php");
         }
-		
-		return;		
-	}
+        return;
+    }
 ?>

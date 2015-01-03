@@ -9,7 +9,7 @@ function setEvents() {
     setSubmitEvents();
     setNotificationEvents();
  }
- 
+
 /*
  *        name: setSubmitEvents
  *        desc: Stage all non-standard submit events actions.
@@ -40,7 +40,7 @@ function setEvents() {
         if ((method == null || action == "")) {
             method = "POST"; // Default method will be 'POST'
         }
-        
+
         method = method.toUpperCase();
         if (method != 'POST' && method != 'GET') {
             alert('METHOD NÃO É POST NEM GET!');
@@ -56,7 +56,7 @@ function setEvents() {
 
         var href = $(this).attr('href');
         var id = $(this).attr('id');
-        
+
         var values = {};
         values['id'] = id;
 
@@ -71,4 +71,3 @@ function setEvents() {
         closeNotification();
     });
  }
-

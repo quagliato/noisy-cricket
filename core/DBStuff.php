@@ -69,5 +69,4 @@ class DBStuff {
         return $rs;
     }
 }
-
 ?>

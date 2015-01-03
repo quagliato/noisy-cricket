@@ -1,8 +1,8 @@
 <?php
-	session_start();
-	if(isset($_SESSION['user_id'])) unset($_SESSION['user_id']);
-	
-	Structure::header();
+    session_start();
+    if(isset($_SESSION['user_id'])) unset($_SESSION['user_id']);
+
+    Structure::header();
 ?>
                 <form method="POST" action="<?=APP_URL?>/action/usuario/cadastrar" class="new_submit">
                     <h1>Usuário > Cadastrar</h1>
@@ -15,7 +15,7 @@
 
                     <label for="senha">Senha</label>
                     <input name="Usuario-senha" type="password" id="senha" required="required">
-                
+
                     <label for="confirmacao_senha">Confirmação Senha</label>
                     <input name="confirmacao_senha" type="password" id="confirmacao_senha" placeholder="Confirme sua senha" required="required" onchange="validatePassword()">
 

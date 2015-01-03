@@ -21,7 +21,7 @@ class DataBinder {
                 }
             }
         }
-
         return $obj;
     }
 }
+?>

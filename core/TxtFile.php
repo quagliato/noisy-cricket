@@ -1,7 +1,6 @@
 <?php
 
-    class TxtFile {
-
+class TxtFile {
     private $filename;
     private $buffer;
     private $writtenContent;
@@ -12,12 +11,11 @@
         }
         $this->filename = $filename;
     }
-    
+
     public function fileExists() {
         if (!isset($this->filename) || is_null($this->filename) || $this->filename == "") {
             return false;
         }
-
         return file_exists($this->filename);
     }
 
@@ -25,7 +23,6 @@
         if ($this->fileExists()) {
             return filesize($this->filename);
         }
-        
         return -1;
     }
 
@@ -43,25 +40,22 @@
             $this->loadContent();
             $aux = array_merge($this->writtenContent, $this->buffer);
         }
-
         return $aux;
     }
 
     private function loadContent() {
         $this->writtenContent = array();
-
         if ($this->fileExists()) {
             $handle = fopen($this->filename, "r");
             if ($handle) {
                 while (($line = fgets($handle)) != false) {
-                    $this->writtenContent[] = $line;        
+                    $this->writtenContent[] = $line;
                 }
             } else {
                 throw new Exception("TxtFile could not load file content.");
             }
             fclose($handle);
         }
-            
         return $this->writtenContent;
     }
 
@@ -76,7 +70,6 @@
         if (!is_array($this->buffer) || is_null($this->buffer)) {
             $this->buffer = array();
         }
-        
         $this->buffer[] = $string;
     }
 
@@ -84,7 +77,6 @@
         if ($this->fileExists() && $this->getFileSize() > -1) {
             $string = "\n".$string;
         }
-
         file_put_contents($this->filename, $string, FILE_APPEND);
     }
 
@@ -106,7 +98,6 @@
         }
 
         $this->buffer = array();
-
         return true;
     }
 
@@ -118,7 +109,6 @@
             $this->appendNewLine("");
             $this->write(0);
         }
-
         $this->buffer = array();
     }
 
@@ -127,7 +117,6 @@
         if ($this->fileExists() && $this->getFileSize() > -1) {
             return copy($this->filename, $newFilename);
         }
-
         return false;
     }
 
@@ -147,9 +136,7 @@
                 return new TxtFile($newFilename);
             }
         }
-
         return false;
     }
 }
-
 ?>

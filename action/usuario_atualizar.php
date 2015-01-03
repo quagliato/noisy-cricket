@@ -1,11 +1,11 @@
 <?php
-	$usuario_old = Structure::verifySession();
+    $usuario_old = Structure::verifySession();
     $return = array();
 
     $usuario = DataBinder::bind($_POST, 'Usuario');
 
     $blacklist_dao = new BlacklistDAO;
-    
+
     if ($blacklist_dao->isBlacklisted($usuario->get('email'))) {
          $return[] = array(
             "Action" => "Error",
@@ -17,7 +17,7 @@
             if (!in_array($key, array('sys_type', 'sys_tablename', 'sys_validation', 'id', 'senha', 'dt_ultimo_login', 'dt_registro'))) {
                 if ($val != $usuario->get($key)) {
                     $os_que_mudaram[] = $key;
-                }			
+                }
             }
         }
 
@@ -51,5 +51,4 @@
     }
 
     echo json_encode($return);
-	
 ?>

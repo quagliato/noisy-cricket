@@ -1,18 +1,14 @@
 <?php
     $usuario = Structure::verifyAdminSession();
     Structure::header();
-
     $blacklist_dao = new BlacklistDAO;;
-
     $blacklist = $blacklist_dao->selectAll("Blacklist", NULL);
     if (!is_array($blacklist)) {
         $blacklist = array($blacklist);
     }
 ?>
     <h1>Blacklist > Listar</h1>
-
     <a href="<?=APP_URL?>/admin/blacklist/cadastrar">Cadastrar novo backlisted</a>
-    
     <h2>Blacklist</h2>
     <?php if ($blacklist) : ?>
     <table>
@@ -34,6 +30,4 @@
     <?php else : ?>
         <p>Nenhum e-mail cadastrado</p>
     <?php endif; ?>
-
-
 <?php Structure::footer(); ?>

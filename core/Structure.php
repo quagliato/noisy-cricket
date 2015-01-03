@@ -1,13 +1,12 @@
 <?php
 
 class Structure {
-    
     public static function redir($page) {
         $page = APP_URL.$page;
         echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=$page' />";
         exit;
     }
-    
+
     public static function redirWithMessage($message, $page) {
         echo "<script>alert('".$message."');</script>";
         Structure::redir($page);
@@ -18,10 +17,10 @@ class Structure {
         if (!isset($text) || is_null($text) || $text == "") {
             $text = "Voltar ao painel";
         }
-        
+
         return "<a href=\"".APP_URL."/dashboard\">$text</a>";
     }
-    
+
     public static function verifySession() {
         if (!isset($_SESSION)) {
             session_start();
@@ -54,7 +53,7 @@ class Structure {
     public static function verifyAdminSession() {
         return Structure::verifySpecificRole('ADM');
     }
-    
+
     public static function header() {
         include_once("theme/header.php");
     }
@@ -70,7 +69,5 @@ class Structure {
     public static function customFooter($footer) {
         include_once("theme/footer-$footer.php");
     }
-
 }
-
 ?>

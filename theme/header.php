@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
-    <head>	
+    <head>
         <link rel="canonical" href="<?=APP_URL?>" />
 
         <meta charset="UTF-8" />
@@ -70,7 +70,7 @@
                         <h1><a href="<?=APP_URL?>"><?=APP_TITLE?></a></h1>
                         <?php endif; ?>
                     </div>
-    
+
                     <div class="side" id="right">
                         <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
                         <div id="info" class="fr">
@@ -96,4 +96,3 @@
         </div>
 
         <section class="wrapper">
-

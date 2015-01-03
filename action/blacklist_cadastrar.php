@@ -1,8 +1,8 @@
 <?php
     $usuario = Structure::verifyAdminSession();
-    
+
     $return = array();
-    
+
     $blacklist = DataBinder::bind($_POST, "Blacklist");
 
     $blacklist_dao = new BlacklistDAO;

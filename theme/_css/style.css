@@ -1,6 +1,6 @@
 body{
-	background-color: #FFFFFF;
-    font-family: 'Open Sans', sans-serif; 
+    background-color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
     padding-bottom: 100px;
     position: relative;
 }
@@ -140,7 +140,7 @@ table .right{
 /******************************************************************************/
 /* NOTIFICATIONS */
 
-.notification {  
+.notification {
     border-top: 3px solid #000000;
     bottom: 0;
     color: #000000;

@@ -2,15 +2,15 @@
 
     $return = array();
 
-	$code = $_POST['code'];
-	$senha = $_POST['senha'];
-	$confirmacao_senha = $_POST['confirmacao_senha'];
-	
-	$dao = new GenericDAO;
-	
-	$request = $dao->selectAll('Request',"code = '".$code."'");
-	
-	if (!$request) {
+    $code = $_POST['code'];
+    $senha = $_POST['senha'];
+    $confirmacao_senha = $_POST['confirmacao_senha'];
+
+    $dao = new GenericDAO;
+
+    $request = $dao->selectAll('Request',"code = '".$code."'");
+
+    if (!$request) {
         $return[] = array(
             'Action' => 'Error',
             'Error' => 'Código de restauração não cadastrado no sistema.'
@@ -54,6 +54,5 @@
             }
         }
     }
-        
     echo json_encode($return);
 ?>

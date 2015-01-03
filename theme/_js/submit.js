@@ -1,5 +1,5 @@
 /*
- *        name: genericSubmit 
+ *        name: genericSubmit
  *        desc: It submits info to the server
  * paramaeters: action : sting, method : string, values : array, success : function, fail : function, always : function
  *     returns: none
@@ -12,7 +12,7 @@
         result.forEach(function(entry){
             var originalAction = entry['Action'];
             var action = originalAction.toLowerCase();
-    
+
             switch (action){
                 case 'message':
                 case 'error':
@@ -32,9 +32,9 @@
     var always = function() {
         alert('Seu form...');
     }
-    
+
     var result = null;
-    
+
     method = method.toUpperCase();
     switch (method) {
         case 'POST':
@@ -45,4 +45,3 @@
             break;
     } // switch end
  }
-

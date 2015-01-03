@@ -30,10 +30,9 @@ class LogEngine {
             $timestamp = new DateTime('now');
             $timestamp = $timestamp->format("YmdHis");
             $newFilename = $timestamp."_".self::$logFilename;
-            
+
             $file = $file->moveFile($newFilename);
         }
-        
         return $file;
     }
 }

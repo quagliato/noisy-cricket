@@ -45,18 +45,18 @@
     /*
     $bgcolor = '#EEEDED';
     $bgcolor_old = '#FFFFFF';
-    
+
     $color1 = '#003E50';
     $color1_old = '#D6233B';
-    
+
     $color2 = '#007987'
-    $color2_old = '#312D44';  
+    $color2_old = '#312D44';
     */
 
     // EMAILS
     // Default e-mail address to a real person
     define('DEFAULT_HUMAN_EMAIL', 'contato@noisy-cricket.net');
-    
+
     // Default no-reply e-mail
     define('DEFAULT_EMAIL_FROM', 'noreply@noisy-cricket.net');
     // Default signature for all e-mails
