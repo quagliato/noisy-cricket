@@ -41,18 +41,6 @@
     // Sets default timezone.
     date_default_timezone_set("America/Sao_Paulo");
 
-    // COLORS
-    /*
-    $bgcolor = '#EEEDED';
-    $bgcolor_old = '#FFFFFF';
-
-    $color1 = '#003E50';
-    $color1_old = '#D6233B';
-
-    $color2 = '#007987'
-    $color2_old = '#312D44';
-    */
-
     // EMAILS
     // Default e-mail address to a real person
     define('DEFAULT_HUMAN_EMAIL', 'contato@noisy-cricket.net');
@@ -66,7 +54,6 @@
 
     // Default e-mail subject
     define('DEFAULT_EMAIL_SUBJECT', APP_TITLE);
-
 
     // Include custom configs
     include_once("custom/custom_config.php");
