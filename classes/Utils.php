@@ -2,6 +2,9 @@
 
 class Utils {
 
+    // name      : defineLanguage
+    // params    : array $__GET
+    // desc      : Verify index 'lang' on $__GET and sets a $_SESSSION for it.
     public static function defineLanguage($__GET) {
         $lang = "pt";
 
@@ -23,6 +26,9 @@ class Utils {
         return $lang;
     }
 
+    // name      : brFormat2SQLTimestamp
+    // params    : string $str
+    // desc      : Formats 'd/m/Y H:i:s' for 'Y-m-d H:i:s'
     public static function brFormat2SQLTimestamp($str) {
         $day = substr($str, 0, 2);
         $month = substr($str, 3, 2);
@@ -35,6 +41,9 @@ class Utils {
         return $year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':'.$second;
     }
 
+    // name      : sqlTimestamp2BrFormat
+    // params    : string $str
+    // desc      : Formats 'Y-m-d H:i:s' for 'd/m/Y H:i:s'
     public static function sqlTimestamp2BrFormat($str) {
         $year = substr($str, 0, 4);
         $month = substr($str, 5, 2);
@@ -47,12 +56,18 @@ class Utils {
         return $day."/".$month."/".$year.' '.$hour.':'.$minute.':'.$second;
     }
 
+    // name      : sqlDate2SimpleDate
+    // params    : string $str
+    // desc      : Formats 'Y-m-d H:i:s' for 'd/m/Y H:i:s' and cuts only the date.
     public static function sqlDate2SimpleDate($str) {
         $result = static::sqlTimestamp2BrFormat($str);
 
         return substr($result, 0, 10);
     }
 
+    // name      : cleanString
+    // params    : string $string
+    // desc      : Remove non-letters and non-numbers caracters from a string.
     public static function cleanString($string) {
         $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
         $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
@@ -61,6 +76,9 @@ class Utils {
    
     }
 
+    // name      : getBrazilStateName
+    // params    : string $shortname
+    // desc      : Returns full name of a Brazilian state by its shortname
     public static function getBrazilStateName($shortname) {
         switch($shortname) {
             case "AC": return "Acre";
@@ -96,6 +114,9 @@ class Utils {
         return false;
     }
 
+    // name      : getCountryName
+    // params    : string $shortname
+    // desc      : Returns full name of a country by its shortname (in English).
     public static function getCountryName($shortname) {
 
         switch ($shortname) {
@@ -351,6 +372,10 @@ class Utils {
         return false;
     }
 
+    // name      : getImageResized
+    // params    : string $imageFileName, int $width, int $height
+    // desc      : Resizes and crop a image to the specified size, writes it
+    //             on images folder and returns its URL.
     public static function getImageResized($imageFileName, $width, $height) {
         $originalImageFileName = $imageFileName;
 
