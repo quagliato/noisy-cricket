@@ -403,12 +403,12 @@ class Utils {
             $file_exists = true;
             $file_headers = @get_headers($ini_filename);
 
-            if($file_headers[0] == 'HTTP/1.0 404 Not Found') {
+            if ($file_headers[0] == 'HTTP/1.0 404 Not Found' || 
+                $file_headers[0] == 'HTTP/1.1 404 Not Found') {
                $file_exists = false;
             }
 
             if ($file_exists && strlen($originalImageFileName) > 0) {
-            // if (file_exists($ini_filename)) {
                 $what = getimagesize($ini_filename);
                 switch(strtolower($what['mime'])) {
                     case 'image/png':
