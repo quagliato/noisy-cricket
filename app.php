@@ -11,13 +11,14 @@
     include_once("vo/Blacklist.php");
     include_once("vo/Request.php");
     include_once("vo/Usuario.php");
-
+    
     include_once("dao/GenericDAO.php");
     include_once("dao/BlacklistDAO.php");
     include_once("dao/UsuarioDAO.php");
 
     include_once("classes/Notification.php");
     include_once("classes/Validation.php");
+    include_once("classes/Utils.php");
 
     include_once("custom/custom_app.php");
 ?>

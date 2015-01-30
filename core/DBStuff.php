@@ -35,7 +35,10 @@ class DBStuff {
 
     public function query() {
         $query = mysql_query($this->sql);
-        file_put_contents(SQL_LOG_FILENAME, "[".date('Ymd H:i:s')."] SQL: ".$this->sql."\n", FILE_APPEND);
+        $logEngine = new LogEngine(SQL_LOG_FILENAME);
+        $logEngine->logIt("[".date('Ymd H:i:s')."] SQL: ".$this->sql);
+
+        // TODO: How to catch error in SQL Query?
 
         return $query;
     }
@@ -45,7 +48,8 @@ class DBStuff {
     }
 
     private function error($error) {
-        file_put_contents(SQL_LOG_FILENAME, "[".date('Ymd H:i:s')."] ERROR: ".$error."\n", FILE_APPEND);
+        $logEngine = new LogEngine("sql_error.log");
+        $logEngine->logIt("[".date('Ymd H:i:s')."] SQL ERROR: ".$error);
     }
 
     public function testDB(){
@@ -69,4 +73,5 @@ class DBStuff {
         return $rs;
     }
 }
+
 ?>

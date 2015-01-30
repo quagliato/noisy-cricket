@@ -2,37 +2,47 @@
 
 class LogEngine {
 
-    private static $logFilename = "error.log";
-    private static $maxLogFilesize = 10485760; // 10MB in B
+    private $logFilename;
+    private static $maxLogFilesize = DEFAULT_LOG_MAX_FILESIZE;
 
-    /*
-    public function __construct($logFilename) {
-        if (!isset($logFilename) || is_null($logFilename) || $logFilename == "") {
+    // name      : __construct
+    // params    : string $filename
+    // desc      : Creates a log file with the $filename.
+    public function __construct($filename) {
+        if (!isset($filename) || is_null($filename) || $filename == "") {
             throw new Exception("Cannot log whithout the log's filename.");
         }
 
-        $this->logFilename;
+        $this->logFilename = $filename;
     }
-    */
 
+    // name      : logIt
+    // params    : string $string
+    // desc      : Appends the $string to the file.
     public function logIt($string) {
-        $file = new TxtFile(self::$logFilename);
+        $file = new TxtFile($this->logFilename);
         $file->loadlessAppendNewLine($string);
 
         $file = $this->compactLogFile($file);
-        if (!$file) {
-            throw new Exception("LogEngine: Could not compact file.");
-        }
     }
 
+    // name      : compactLogFile
+    // params    : file $file
+    // desc      : If the log file ir bigger than $maxLogFilesize, it is copied
+    //             to a backup file.
     private function compactLogFile($file) {
         if ($file->getFileSize() > self::$maxLogFilesize) {
             $timestamp = new DateTime('now');
             $timestamp = $timestamp->format("YmdHis");
-            $newFilename = $timestamp."_".self::$logFilename;
-
+            $newFilename = $timestamp."_".$this->logFilename;
+            
             $file = $file->moveFile($newFilename);
+
+            if (!$file) {
+                throw new Exception("LogEngine: Could not compact file.");
+            }
         }
+        
         return $file;
     }
 }
