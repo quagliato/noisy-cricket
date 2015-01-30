@@ -3,7 +3,7 @@
 class LogEngine {
 
     private $logFilename;
-    private static $maxLogFilesize = DEFAULT_LOG_MAX_FILESIZE;
+    private static $logMaxFilesize = DEFAULT_LOG_MAX_FILESIZE;
 
     // name      : __construct
     // params    : string $filename
@@ -28,10 +28,10 @@ class LogEngine {
 
     // name      : compactLogFile
     // params    : file $file
-    // desc      : If the log file ir bigger than $maxLogFilesize, it is copied
+    // desc      : If the log file ir bigger than $logMaxFilesize, it is copied
     //             to a backup file.
     private function compactLogFile($file) {
-        if ($file->getFileSize() > self::$maxLogFilesize) {
+        if ($file->getFileSize() > self::$logMaxFilesize) {
             $timestamp = new DateTime('now');
             $timestamp = $timestamp->format("YmdHis");
             $newFilename = $timestamp."_".$this->logFilename;

@@ -39,7 +39,7 @@
     define('SQL_LOG_FILENAME', 'sql.log');
 
     // Default maximum size for log files befor compact it.
-    define('DEFAULT_MAX_LOG_FILESIZE', 1024000);  // 1MB in B
+    define('DEFAULT_LOG_MAX_FILESIZE', 1024000);  // 1MB in B
 
     // Sets default timezone.
     date_default_timezone_set("America/Sao_Paulo");
