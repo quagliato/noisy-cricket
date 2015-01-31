@@ -17,7 +17,7 @@ function setEvents() {
  *     returns: none
  *
  */
- function setSubmitEvents() {
+function setSubmitEvents() {
 
     $('form.new_submit').submit(function(event){
         event.preventDefault();
@@ -62,12 +62,34 @@ function setEvents() {
 
         genericSubmit(href, 'POST', values);
     });
- }
+}
 
- function setNotificationEvents() {
+function setNotificationEvents() {
     $('#close_btn').bind('click', function(event) {
         event.preventDefault();
 
         closeNotification();
+    });
+}
+
+  function setClickEvents(){
+    $('.lightbox-open').bind('click', function(event) {
+        event.preventDefault();
+        openLightbox($(this).attr("href"));
+    });
+
+    $('#lightbox #close').bind('click', function(event) {
+        event.preventDefault();
+        closeLightbox();
+    });
+
+    $('#lightbox_overlay').bind('click', function(event) {
+        event.preventDefault();
+        closeLightbox();
+    });
+
+    $('input[type=submit].cancel').bind('click', function(event) {
+        event.preventDefault();
+        history.back();
     });
  }

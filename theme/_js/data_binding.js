@@ -2,16 +2,18 @@
  *        name: bindForm
  *        desc: It binds form's inputs into an array.
  * paramaeters: form : jQuery Object
+                values : Array
  *     returns: JS array (the key is the property name, the value is the value)
  *
  */
-function bindData(form) {
+function bindData(form, values) {
     var accepted_types = [
         "checkbox",
         "date", 
         "datetime", 
         "datetime-local", 
         "email", 
+        "file", 
         "hidden", 
         "month", 
         "number", 
@@ -25,7 +27,9 @@ function bindData(form) {
         "week"
     ];
 
-    var values = {};
+    if (values == null) {
+        values = {};
+    }
 
     form.children().each(function() {
         var name = $(this).attr('name');
@@ -45,10 +49,19 @@ function bindData(form) {
                         values[name] = checkboxes; // add the array with the new value into the values array
                     }
                 } else {
-                    values[name] = $(this).val();
+                    
+                    if (values[name] != null) {
+                        var newValues = new Array();
+                        newValues = values[name];
+                        newValues[newValues.length] = $(this).val();
+                        values[name] = newValues;
+                    } else {
+                        values[name] = $(this).val();
+                    }
                 }
             }
-        } else if($(this).is('select')) { // if it's a select
+
+        } else if ($(this).is('select')) { // if it's a select
 
             $(this).children().each(function(){
                 if ($(this).is(':selected') && $(this).is('option')) { // if it's the selected option
@@ -56,8 +69,14 @@ function bindData(form) {
                 }
             });
 
-        } else if($(this).is('textarea')) { // it it's a textarea
-            values[name] = $(this).html();
+        } else if ($(this).is('textarea')) { // it it's a textarea
+            if ($(this).hasClass('tinymce')) {
+                values[name] = $(this).val();
+            } else {
+               values[name] = $(this).val();
+            }
+        } else {
+            values = bindData($(this), values);
         }
     });
 
