@@ -2,11 +2,16 @@
 
 class DataBinder {
 
-    public static function bind($post, $classname) {
+    // name......: bind
+    // params....: array $__POST, string $classname
+    // desc      : This function gets $__POST ($_POST) content searching for
+    //             VO-property pattern and bind its value to a new objected
+    //             created using $classname.
+    public static function bind($__POST, $classname) {
         $obj = new $classname;
         $obj_props = $obj->props();
 
-        foreach ($post as $key => $value) {
+        foreach ($__POST as $key => $value) {
 
             $dashpos = strpos($key, '-');
             $keylen = strlen($key);
