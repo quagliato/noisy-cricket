@@ -38,7 +38,7 @@
 
                     <div class="input_line center submit_line">
                         <input type="submit" name="cancelar" value="Cancelar" href="<?=APP_URL?>" class="cancel negative">
-                        <input type="submit" name="cadastrar" value="Cadastrar" class="positive">
+                        <input type="submit" name="salvar" value="Salvar" class="positive">
                     </div>
                 </form>
             </section>
