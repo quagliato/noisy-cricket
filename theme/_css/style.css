@@ -201,6 +201,23 @@ button.submit{
     width: auto;
 }
 
+a.submit,
+a.submit:visited,
+a.submit:hover,{
+    background-color: #2B243C;
+    border: none;
+    border-radius: 2px 2px;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: auto;
+}
+
 button{
     background-color: #888888;
     border: none;
