@@ -60,39 +60,32 @@
     </head>
 
     <body>
-        <header>
-            <div id="topline">
-                <div class="wrapper">
-                    <div class="side" id="left">
-                        <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
-                        <h1><a href="<?=APP_URL?>/dashboard"><?=APP_TITLE?></a></h1>
-                        <?php else : ?>
-                        <h1><a href="<?=APP_URL?>"><?=APP_TITLE?></a></h1>
-                        <?php endif; ?>
-                    </div>
+    <header>
+        <div id="topline">
+            <div class="wrapper">
+                <div class="side" id="left">
+                    <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
+                    <h1><a href="<?=APP_URL?>/dashboard"><?=APP_TITLE?></a></h1>
+                    <?php else : ?>
+                    <h1><a href="<?=APP_URL?>"><?=APP_TITLE?></a></h1>
+                    <?php endif; ?>
+                </div>
 
-                    <div class="side" id="right">
-                        <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
-                        <div id="info" class="fr">
-                            <?php
-                                $userDAO = new UsuarioDAO;
-                                $user = $userDAO->getUserById($_SESSION['user_id']);
-                            ?>
-                            <p><?=$user->get('email')?></p>
-                            <p class="fr" style="line-height:15px; vertical-align:top;">
-                                <a href="<?=APP_URL?>/usuario/atualizar">Alterar Cadastro</a>&nbsp;&nbsp;&nbsp;
-                                <a href="<?=APP_URL?>/logout">Sair</a>
-                            </p>
-                        </div>
-                        <?php endif; ?>
+                <div class="side" id="right">
+                    <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
+                    <div id="info" class="fright">
+                        <?php
+                            $userDAO = new UsuarioDAO;
+                            $user = $userDAO->getUserById($_SESSION['user_id']);
+                        ?>
+                        <p><?=$user->get('email')?></p>
+                        <p class="fright" style="line-height:15px; vertical-align:top;">
+                            <a href="<?=APP_URL?>/usuario/atualizar">Alterar Cadastro</a>&nbsp;&nbsp;&nbsp;
+                            <a href="<?=APP_URL?>/logout">Sair</a>
+                        </p>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
-        </header>
-        <div id="notification_spot" class="notification">
-            <div id="notification_content">
-            </div>
-            <a href="#" id="close_btn">X</a>
         </div>
-
-        <section class="wrapper">
+    </header>
