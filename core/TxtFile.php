@@ -1,19 +1,5 @@
 <?php
 
-class TxtFile {
-    private $filename;
-    private $buffer;
-    private $writtenContent;
-
-    public function __construct($filename) {
-        if (!isset($filename) || is_null($filename) || $filename == "") {
-            throw new Exception("TxtFile cannot be initialized without a filename.");
-        }
-        $this->filename = $filename;
-    }
-
-    public function fileExists() {<?php
-
     class TxtFile {
 
     private $filename;
