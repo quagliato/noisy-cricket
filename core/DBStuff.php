@@ -36,7 +36,7 @@ class DBStuff {
     public function query() {
         $query = mysql_query($this->sql);
         $logEngine = new LogEngine(SQL_LOG_FILENAME);
-        $logEngine->logIt("[".date('Ymd H:i:s')."] SQL: ".$this->sql);
+        $logEngine->logIt("[".date('Y-m-d H:i:s')."] SQL: ".$this->sql);
 
         // TODO: How to catch error in SQL Query?
 
@@ -49,7 +49,7 @@ class DBStuff {
 
     private function error($error) {
         $logEngine = new LogEngine("sql_error.log");
-        $logEngine->logIt("[".date('Ymd H:i:s')."] SQL ERROR: ".$error);
+        $logEngine->logIt("[".date('Y-m-d H:i:s')."] SQL ERROR: ".$error);
     }
 
     public function testDB(){
