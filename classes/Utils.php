@@ -41,6 +41,15 @@ class Utils {
         return $year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':'.$second;
     }
 
+    // name      : brFormat2SQLTimestamp
+    // params    : string $str
+    // desc      : Formats 'd/m/Y' for 'Y-m-d'
+    public static function brFormat2SQLDate($str) {
+        $str = self::brFormat2SQLTimestamp($str);
+
+        return substr($str, 0, 10);
+    }
+
     // name      : sqlTimestamp2BrFormat
     // params    : string $str
     // desc      : Formats 'Y-m-d H:i:s' for 'd/m/Y H:i:s'
