@@ -12,7 +12,7 @@ class Blacklist extends GenericClass{
     );
 
     protected static $createSQL = "
-        CREATE TABLE IF NOT EXISTS ".self::$sys_tablename." (
+        CREATE TABLE IF NOT EXISTS ".self::sys_tablename." (
             id INT NOT NULL AUTO_INCREMENT,
             user_email VARCHAR(100) NOT NULL,
             PRIMARY KEY (id)

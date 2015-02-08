@@ -22,7 +22,7 @@ class Usuario extends GenericClass{
     );
 
     protected static $createSQL = "
-        CREATE TABLE IF NOT EXISTS ".self::$sys_tablename." (
+        CREATE TABLE IF NOT EXISTS ".self::sys_tablename." (
             id int(11) NOT NULL AUTO_INCREMENT,
             nome VARCHAR(100) NOT NULL,
             senha VARCHAR(64) NOT NULL,

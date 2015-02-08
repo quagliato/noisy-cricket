@@ -18,7 +18,7 @@ class Request extends GenericClass{
     );
 
     protected static $createSQL = "
-        CREATE TABLE IF NOT EXISTS ".self::$sys_tablename." (
+        CREATE TABLE IF NOT EXISTS ".self::sys_tablename." (
             code VARCHAR(60) NOT NULL,
             id_user INT NOT NULL,
             email_sent VARCHAR(100) NOT NULL,
