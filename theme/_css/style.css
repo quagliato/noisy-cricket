@@ -166,10 +166,8 @@ main h6{
 /******************************************************************************/
 /* BUTTONS */
 
-input[type=submit].negative,
-button.negative { background-color: #FE938F; color: #000000 !important;}
-input[type=submit].positive,
-button.positive { background-color: #98F678; color: #000000 !important;}
+.negative { background-color: #FE938F !important; color: #000000 !important;}
+.positive { background-color: #98F678 !important; color: #000000 !important;}
 
 input[type=submit]{
     background-color: #2B243C;
@@ -203,16 +201,18 @@ button.submit{
 
 a.submit,
 a.submit:visited,
-a.submit:hover,{
+a.submit:hover{
     background-color: #2B243C;
     border: none;
     border-radius: 2px 2px;
     color: #FFFFFF;
+    display: block;
     font-weight: bold;
     height: 40px;
     line-height: 40px;
     padding: 0 10px;
     text-align: center;
+    text-decoration: none;
     text-transform: uppercase;
     vertical-align: middle;
     width: auto;
