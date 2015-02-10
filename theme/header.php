@@ -64,11 +64,15 @@
         <div id="topline">
             <div class="wrapper">
                 <div class="side" id="left">
-                    <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
-                    <h1><a href="<?=APP_URL?>/dashboard"><?=APP_TITLE?></a></h1>
-                    <?php else : ?>
-                    <h1><a href="<?=APP_URL?>"><?=APP_TITLE?></a></h1>
-                    <?php endif; ?>
+                    <?php 
+                        $link = false;
+                        if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) :
+                            $link = APP_URL."/dashboard";
+                        else :
+                            $link = APP_URL;
+                        endif;
+                    ?>
+                    <h1><a href="<?=$link?>"><?=APP_TITLE?></a></h1>
                 </div>
 
                 <div class="side" id="right">
