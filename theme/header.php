@@ -15,14 +15,16 @@
         <link rel="shortcut icon" type="image/png" href="_images/favicon.png" />
 
         <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_css/style.css" />
-        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_libs/jquery-ui/jquery-ui-1.10.3.custom.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_css/noisy-cricket.css" />
+        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_css/custom.css" />
 
         <!-- Third-party libs -->
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery-2.0.3.min.js"></script>
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery-ui/jquery-ui-1.10.3.custom.min.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery-2.1.3.min.js"></script>
         <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery.easing-1.3.min.js"></script>
         <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_libs/jquery-ui-1.11.2/jquery-ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_libs/jquery-ui-1.11.2/jquery-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?=APP_URL?>/theme/_libs/font-awesome-4.3.0/font-awesome.min.css" />
         <!-- /Third-party libs -->
 
         <script>
