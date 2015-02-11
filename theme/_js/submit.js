@@ -6,6 +6,7 @@
  *
  */
  function genericSubmit(action, method, values) {
+    closeNotification();
     var success = function(data){
         var result = JSON.parse(data);
 
