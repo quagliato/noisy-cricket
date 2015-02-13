@@ -53,6 +53,12 @@ a:hover{ text-decoration: none; }
 .mt40 { margin-top: 40px !important; }
 .mt80 { margin-top: 80px !important; }
 
+.upper { text-transform: uppercase !important; }
+.lower { text-transform: lowercase !important; }
+.no-transform { text-transform: none !important; }
+
+.clickable { cursor: pointer; }
+
 /******************************************************************************/
 /* INPUTS */
 .input_line { display: block; height: auto; margin: 0 0 10px 0; overflow: hidden; position: relative; width: 100%; }
