@@ -34,6 +34,9 @@
     define('DB_PASS', '');
     define('DB_NAME', '');
 
+    // THEME DEFINITION
+    define('THEME', 'default');
+
     // Default SQL log filename (with path, if you want).
     // ALL SQL activity is logged.
     define('SQL_LOG_FILENAME', 'sql.log');
@@ -46,7 +49,7 @@
 
     // EMAILS
     // Default e-mail address to a real person
-    define('DEFAULT_HUMAN_EMAIL', 'contato@noisy-cricket.net');
+    define('DEFAULT_HUMAN_EMAIL', 'contact@noisy-cricket.net');
 
     // Default no-reply e-mail
     define('DEFAULT_EMAIL_FROM', 'noreply@noisy-cricket.net');
