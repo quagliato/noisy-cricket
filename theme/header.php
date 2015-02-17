@@ -32,11 +32,11 @@
             var templateURL = "<?=APP_URL?>";
         </script>
 
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/notification.js"></script>
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/data_binding.js"></script>
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/submit.js"></script>
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/events.js"></script>
-        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/js.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/noisy-cricket/notification.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/noisy-cricket/data_binding.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/noisy-cricket/submit.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/noisy-cricket/events.js"></script>
+        <script type="text/javascript" src="<?=APP_URL?>/theme/_js/noisy-cricket/js.js"></script>
 
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
