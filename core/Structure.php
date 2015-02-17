@@ -75,18 +75,18 @@ class Structure {
 
     public static function header($header = null) {
         if ($header && !is_null($header) && strlen($header) > 0) {
-            include_once("theme/header-$header.php");
+            include_once("theme/".THEME."/header-$header.php");
         } else {
-            include_once("theme/header.php");
+            include_once("theme/".THEME."/header.php");
         }
         
     }
 
     public static function footer($footer = null) {
         if ($footer && !is_null($footer) && strlen($footer) > 0) {
-            include_once("theme/footer-$footer.php");
+            include_once("theme/".THEME."/footer-$footer.php");
         } else {
-            include_once("theme/footer.php");
+            include_once("theme/".THEME."/footer.php");
         }
     }
 }

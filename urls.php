@@ -1,7 +1,7 @@
 <?php
     $urlpatterns = array(
         "/" => "index.php",
-        "/404" => "theme/404.php",
+        "/404" => "view/404.php",
         "/login" => "action/login.php",
         "/logout" => "action/logout.php",
 

@@ -9,7 +9,7 @@
         $dbcon = new DBStuff;
 
         if (!$dbcon->testDB()) {
-            include_once("theme/db_problems.php");
+            include_once("view/db_problems.php");
 
         } else {
             if(strpos(REQUEST_URI, '?') != 0){
@@ -29,7 +29,7 @@
                 }
             }
             if (!$found)
-                include_once("theme/404.php");
+                include_once("view/404.php");
         }
         return;
     }
