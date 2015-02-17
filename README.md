@@ -14,6 +14,13 @@ A simple PHP framework.
 * Engine for log files
 * File management
 
+## What comes imported
+* jquery-2.1.3
+* jquery-ui-1.11.2
+* jquery.easing-1.3 
+* jquery.mask
+* font-awesome-4.3.0
+
 ### Set Up
 Clone the source and set up the config.php file and the .htaccess file, both of 
 then located on the root dir. You'll need a DB with user and password.
