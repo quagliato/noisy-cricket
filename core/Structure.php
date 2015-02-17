@@ -73,20 +73,21 @@ class Structure {
         return Structure::verifySpecificRole('ADM');
     }
 
-    public static function header() {
-        include_once("theme/header.php");
+    public static function header($header = null) {
+        if ($header && !is_null($header) && strlen($header) > 0) {
+            include_once("theme/header-$header.php");
+        } else {
+            include_once("theme/header.php");
+        }
+        
     }
 
-    public static function customHeader($header) {
-        include_once("theme/header-$header.php");
-    }
-
-    public static function footer() {
-        include_once("theme/footer.php");
-    }
-
-    public static function customFooter($footer) {
-        include_once("theme/footer-$footer.php");
+    public static function footer($footer = null) {
+        if ($footer && !is_null($footer) && strlen($footer) > 0) {
+            include_once("theme/footer-$footer.php");
+        } else {
+            include_once("theme/footer.php");
+        }
     }
 }
 ?>
