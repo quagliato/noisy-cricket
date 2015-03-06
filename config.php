@@ -27,6 +27,8 @@
 
     // Maximun filesize for uploaded files
     define('MAX_FILESIZE', '50MB');
+    // Defines if database will store UTF-8 encoded data
+    define('UTF8ENCODED', true);
 
     // DB Settings
     define('DB_HOST', '');
