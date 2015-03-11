@@ -19,7 +19,12 @@ class Filler {
                 
                 // Sets the value from the resultset to the property with the
                 // same name.
-                $obj->set($field->name, utf8_encode($field_data[$field->name]));
+                if (UTF8ENCODED === true) {
+                    $obj->set($field->name, utf8_encode($field_data[$field->name]));
+                } else {
+                    $obj->set($field->name, $field_data[$field->name]);
+                }
+                
             }
             $array[] = $obj;
         }

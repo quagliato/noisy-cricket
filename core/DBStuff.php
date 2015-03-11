@@ -66,7 +66,9 @@ class DBStuff {
     public function execute($sql) {
         $this->connect();
         $this->selectDB();
-        $sql = utf8_decode($sql);
+        if (UTF8ENCODED === true) {
+            $sql = utf8_decode($sql);
+        }
         $this->set('sql',$sql);
 
         $rs = $this->query();
