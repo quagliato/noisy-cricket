@@ -18,7 +18,11 @@ function openLightbox(href) {
     };
     
     $.get(href, values, success);
-
+    $('#lightbox_overlay').css('position', 'fixed');
+    $('#lightbox_overlay').css('left', '0px');
+    $('#lightbox_overlay').css('top', '0px');
+    $('#lightbox_overlay').height($(window).height());
+    $('#lightbox_overlay').width($(window).width());
     $('#lightbox_overlay').fadeIn('fast');
     $('#lightbox').fadeIn('fast');
 }
