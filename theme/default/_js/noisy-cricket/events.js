@@ -80,7 +80,7 @@ function setNotificationEvents() {
     });
 }
 
-  function setClickEvents(){
+function setClickEvents(){
     $('.lightbox-open').bind('click', function(event) {
         event.preventDefault();
         openLightbox($(this).attr("href"));

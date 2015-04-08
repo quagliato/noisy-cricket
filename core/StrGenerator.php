@@ -8,7 +8,7 @@ class StrGenerator {
 
         $added_props = array(); //array que armazenara as propriedades usadas no insert;
         foreach($array_props as $key => $val) { //itera a lista de propriedades
-            if (!is_null($val) && strpos($key, 'sys_') === false) {
+            if (!is_null($val) && strlen($val) > 0 && strpos($key, 'sys_') === false) {
 
                 $sql .= "$key,"; //adiciona nome da propriedade na string
                 $added_props[] = $key; //adiciona propriedade no array de propriedades adicionadas
@@ -20,7 +20,7 @@ class StrGenerator {
 
         foreach($added_props as $key) { //itera as propriedades adicionadas
             $particle = $obj->get($key); //define a particula (valor daquela propriedade)
-            if (!is_null($particle)) { //verifica se o valor não é nulo
+            if (!is_null($particle) && strlen($particle) > 0) { //verifica se o valor não é nulo
                 if (in_array($obj->type($key), array('str','date'))) { //se o valor for string
                     $particle = str_replace("'", "\'", $particle);
                     $particle = "'$particle'"; //adiciona apostrofo no começo e no fim
@@ -127,13 +127,14 @@ class StrGenerator {
         $array_props = $obj->props();
         foreach($array_props as $key => $val) { //itera a lista de propriedades
             if (!is_null($val) &&
+                strlen($val) > 0 &&
                 strpos($key, 'sys_') === false &&
                 !in_array($key,$exception_fields)) {
 
                 $sql .= "$key = "; //adiciona nome da propriedade na string
 
                 $particle = $obj->get($key); //define a particula (valor daquela propriedade)
-                if (!is_null($particle)) { //verifica se o valor não é nulo
+                if (!is_null($particle) && strlen($particle) > 0) { //verifica se o valor não é nulo
                     if (in_array($obj->type($key), array('str','date'))) { //se o valor for string
                         $particle = str_replace("'", "\'", $particle);
                         $particle = "'$particle'"; //adiciona apostrofo no começo e no fim
@@ -161,12 +162,13 @@ class StrGenerator {
         $array_props = $obj->props();
         foreach($array_props as $key => $val) { //itera a lista de propriedades
             if (!is_null($val) &&
+                strlen($val) > 0 &&
                 in_array($key, $fields)) {
 
                 $sql .= "$key = "; //adiciona nome da propriedade na string
 
                 $particle = $obj->get($key); //define a particula (valor daquela propriedade)
-                if (!is_null($particle)) { //verifica se o valor não é nulo
+                if (!is_null($particle) && strlen($particle) > 0) { //verifica se o valor não é nulo
                     if (in_array($obj->type($key), array('str','date'))) { //se o valor for string
                         $particle = str_replace("'", "\'", $particle);
                         $particle = "'$particle'"; //adiciona apostrofo no começo e no fim

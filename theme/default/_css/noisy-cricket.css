@@ -166,19 +166,19 @@ a:hover{ text-decoration: none; }
 
 .submit_line { margin-top: 25px; }
 
-.full          { width: 100.0%; }
-.half          { width:  49.0%; }
-.third         { width:  32.0%; }
-.third.last    { width:  33.0%; }
-.fourth        { width:  24.0%; }
-.fifth         { width:  20.0%; }
-.sixth         { width:  16.6%; }
-.sixth.last    { width:  17.0%; }
-.eighth        { width:  12.5%; }
-.tenth         { width:  10.0%; }
+.full          { width: 100.0% !important; }
+.half          { width:  49.0% !important; }
+.third         { width:  32.0% !important; }
+.third.last    { width:  33.0% !important; }
+.fourth        { width:  24.0% !important; }
+.fifth         { width:  20.0% !important; }
+.sixth         { width:  16.6% !important; }
+.sixth.last    { width:  17.0% !important; }
+.eighth        { width:  12.5% !important; }
+.tenth         { width:  10.0% !important; }
 
-.two-thirds    { width:  66.0%; }
-.three-fourths { width:  73.0%; }
+.two-thirds    { width:  66.0% !important; }
+.three-fourths { width:  73.0% !important; }
 
 /******************************************************************************/
 /* LOGIN */
@@ -432,7 +432,7 @@ header #topbanner{
 .notification a,
 .notification a:hover,
 .notification a:visited{
-    color: inherit;
+    color: #000000;
 }
 
 .error {
@@ -492,18 +492,20 @@ header #topbanner{
 
 #lightbox #close{
     background-color: #000000;
-    border: 1px solid #FFFFFF;
     border-radius: 30px;
+    border: 2px solid #CCCCCC;
     color: #FFFFFF;
     display: block;
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: bold;
     height: 30px;
-    line-height: 30px;
+    line-height: 25px;
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: -15px;
+    top: -15px;
     width: 30px;
     text-align: center;
+    text-decoration: none;
     text-transform: uppercase;
     vertical-align: middle;
     z-index: 101;
