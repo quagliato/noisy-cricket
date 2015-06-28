@@ -16,7 +16,7 @@ function openLightbox(href) {
         // alert(data);
         $('#lightbox #content').html(data);
     };
-    
+
     $.get(href, values, success);
     $('#lightbox_overlay').css('position', 'fixed');
     $('#lightbox_overlay').css('left', '0px');
@@ -29,6 +29,7 @@ function openLightbox(href) {
 
 function bindMasks() {
     $('.cpf').mask("999.999.999-99");
+    $('.cnpj').mask("99.999.999/9999-99");
     $('.phone').mask("(00) 0000-0000");
     $('.mobile').mask("(00) 00009-0000");
     $('.date').mask("00/00/0000");

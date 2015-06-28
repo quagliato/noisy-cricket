@@ -20,7 +20,7 @@ function setEvents() {
  */
 function setSubmitEvents() {
 
-    $('form.new_submit').submit(function(event){
+    $('body').delegate('form.new_submit', 'submit', function(event){
         event.preventDefault();
 
         var values = bindData($(this));
@@ -59,7 +59,7 @@ function setSubmitEvents() {
         if (goodToGo) genericSubmit(action, method, values);
     });
 
-    $('a.post').bind('click', function(event){
+    $('body').delegate('a.post', 'click', function(event){
         event.preventDefault();
 
         var href = $(this).attr('href');
@@ -73,7 +73,7 @@ function setSubmitEvents() {
 }
 
 function setNotificationEvents() {
-    $('#close_btn').bind('click', function(event) {
+    $('body').delegate('#close_btn', 'click', function(event) {
         event.preventDefault();
 
         closeNotification();
@@ -81,22 +81,22 @@ function setNotificationEvents() {
 }
 
 function setClickEvents(){
-    $('.lightbox-open').bind('click', function(event) {
+    $('body').delegate('.lightbox-open', 'click', function(event) {
         event.preventDefault();
         openLightbox($(this).attr("href"));
     });
 
-    $('#lightbox #close').bind('click', function(event) {
+    $('body').delegate('#lightbox #close', 'click', function(event) {
         event.preventDefault();
         closeLightbox();
     });
 
-    $('#lightbox_overlay').bind('click', function(event) {
+    $('body').delegate('#lightbox_overlay', 'click', function(event) {
         event.preventDefault();
         closeLightbox();
     });
 
-    $('.cancel').bind('click', function(event) {
+    $('body').delegate('.cancel', 'click', function(event) {
         event.preventDefault();
         history.back();
     });
