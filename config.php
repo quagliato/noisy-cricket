@@ -63,6 +63,13 @@
     // Default e-mail subject
     define('DEFAULT_EMAIL_SUBJECT', APP_TITLE);
 
-    // Include custom configs
-    include_once("custom/custom_config.php");
+    // Includes custom configs
+    if (file_exists("custom/configs") && is_dir("custom/configs")) {
+      $configFiles = scandir("custom/configs");
+      foreach ($configFiles as $configFile) {
+        if (preg_match_all("~\.php$~", $configFile)) {
+          include_once("custom/configs/$configFile");
+        }
+      }
+    }
 ?>

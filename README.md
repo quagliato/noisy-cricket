@@ -17,29 +17,30 @@ A simple PHP framework.
 ## What comes imported
 * jquery-2.1.3
 * jquery-ui-1.11.2
-* jquery.easing-1.3 
+* jquery.easing-1.3
 * jquery.mask
 * font-awesome-4.3.0
 
 ### Set Up
-Clone the source and set up the config.php file and the .htaccess file, both of 
+Clone the source and set up the config.php file and the .htaccess file, both of
 then located on the root dir. You'll need a DB with user and password.
 DO NOT forget to set up the constant ADMIN\_EMAIL. The first user to subscribe
 using the same e-mail as setted on the config file, will the root user.
 
 ### Customize
-Add your customized Viewa, Actions, Model Classes and DAOs inside "custom" directory.
+Add your customized Views, Actions, Model Classes and DAOs inside "custom" directory.
 DO NOT forget to add them to you "custom\_app.php" file. It will make them get
 loaded by the engine. (Views and Actions don't need to be included here.)
-Set up your URLs by adding array entries on $custom\_urlpatterns inside 
+Set up your URLs by adding array entries on $custom\_urlpatterns inside
 "custom\_urls.php" file. The key of the entry is the friendly-url and the value
-is the file that it should request.
+is the file that it should request. You can also create custom configuration files
+simply by putting them inside custom/configs directory with a php extension.
 
 ### DB
 Every column of the table in the DB should have a property using the same name
 inside the Model class. The Model class should have a constant with the tablename (sys_tablename),
 a array "type" which has the datatype for every property of the Model
-($sys_type['property\_name'] = 'type'; use 'int', 'str' or 'date'). Some other 
+($sys_type['property\_name'] = 'type'; use 'int', 'str' or 'date'). Some other
 methods should be implemented. Use class Usuario as example.
 
 ### DataBinding
