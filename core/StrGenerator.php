@@ -8,7 +8,7 @@ class StrGenerator {
 
         $added_props = array(); //array que armazenara as propriedades usadas no insert;
         foreach($array_props as $key => $val) { //itera a lista de propriedades
-            if (!is_null($val) && strlen($val) > 0 && strpos($key, 'sys_') === false) {
+            if (!is_null($val) && !is_array($val) && strlen($val) > 0 && strpos($key, 'sys_') === false) {
 
                 $sql .= "$key,"; //adiciona nome da propriedade na string
                 $added_props[] = $key; //adiciona propriedade no array de propriedades adicionadas
@@ -126,10 +126,7 @@ class StrGenerator {
 
         $array_props = $obj->props();
         foreach($array_props as $key => $val) { //itera a lista de propriedades
-            if (!is_null($val) &&
-                strlen($val) > 0 &&
-                strpos($key, 'sys_') === false &&
-                !in_array($key,$exception_fields)) {
+            if (!is_null($val) && !is_array($val) && strlen($val) > 0 && strpos($key, 'sys_') === false && !in_array($key,$exception_fields)) {
 
                 $sql .= "$key = "; //adiciona nome da propriedade na string
 
@@ -161,10 +158,7 @@ class StrGenerator {
 
         $array_props = $obj->props();
         foreach($array_props as $key => $val) { //itera a lista de propriedades
-            if (!is_null($val) &&
-                strlen($val) > 0 &&
-                in_array($key, $fields)) {
-
+            if (!is_null($val) && !is_array($val) strlen($val) > 0 && in_array($key, $fields)) {
                 $sql .= "$key = "; //adiciona nome da propriedade na string
 
                 $particle = $obj->get($key); //define a particula (valor daquela propriedade)
