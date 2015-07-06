@@ -100,4 +100,19 @@ function setClickEvents(){
         event.preventDefault();
         history.back();
     });
+
+    // Every element with the class .fade-block should have an attribute
+    // data-target that specifies the selector of another element that will be
+    // fade in or fade out.
+    $('body').delegate('.fade-block', 'click', function(event){
+        event.preventDefault();
+        var target = $($(this).attr("data-target"));
+        target.each(function(){
+            if ($(this).hasClass("shown")) {
+                $(this).removeClass("shown").removeClass("hidden").slideUp();
+            } else {
+                $(this).addClass("shown").removeClass("hidden").slideDown();
+            }
+        });
+    });
  }
