@@ -20,5 +20,7 @@
         </div>
 <!-------------------------------------------------------------------------- -->
     </body>
-    <script> bindMasks(); </script>
+    <script>
+      bindMasks();
+    </script>
 </html>
