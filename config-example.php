@@ -1,5 +1,8 @@
 <?php
     // CONFIGS
+    
+    // *** ATENTION ***
+    // THIS FILE SHOULD BE RENAMED TO config.php
 
     // The directory of the domain where app is running;
     // If it is running on root domain, leave it blank.
