@@ -9,26 +9,26 @@
                 <h1>Usuário > Cadastrar</h1>
             </header>
             <section class="wrapper center">
-                <form method="POST" action="<?=APP_URL?>/action/usuario/cadastrar" class="new_submit">
+                <form method="POST" action="<?=APP_URL?>/action/user/cadastrar" class="new_submit">
 
                     <div class="input_line">
                         <div class="input_container half fnone">
                             <label for="nome">Nome completo</label>
-                            <input name="Usuario-nome" type="text" id="nome" required="required">
+                            <input name="User-nome" type="text" id="nome" required="required">
                         </div>
                     </div>
 
                     <div class="input_line">
                         <div class="input_container half fnone">
                             <label for="email">Email</label>
-                            <input name="Usuario-email" type="email" id="email" required="required" placeholder="usuario@servidor.tld">
+                            <input name="User-email" type="email" id="email" required="required" placeholder="usuario@servidor.tld">
                         </div>
                     </div>
 
                     <div class="input_line">
                         <div class="input_container fourth fnone">
                             <label for="senha">Senha</label>
-                            <input name="Usuario-senha" type="password" id="senha" required="required">
+                            <input name="User-senha" type="password" id="senha" required="required">
                         </div>
                         <div class="input_container fourth fnone">
                             <label for="confirmacao_senha">Confirmação Senha</label>

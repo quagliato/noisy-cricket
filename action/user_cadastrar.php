@@ -12,42 +12,42 @@
 
     }
 
-    $usuario_dao = new UsuarioDAO;
-    $usuario = DataBinder::bind($_POST, 'Usuario');
-    $usuario->set('senha', md5($usuario->get('senha')));
-    $usuario->set('dt_registro', date('Y-m-d H:i:s'));
-    $usuario->set('dt_ultimo_login', date('Y-m-d H:i:s'));
+    $userDAO = new UserDAO;
+    $user = DataBinder::bind($_POST, 'User');
+    $user->set('password', md5($user->get('password')));
+    $user->set('dt_register', date('Y-m-d H:i:s'));
+    $user->set('dt_last_login', date('Y-m-d H:i:s'));
 
     $blacklist_dao = new BlacklistDAO;
 
-    if ($blacklist_dao->isBlacklisted($usuario->get('email'))) {
+    if ($blacklist_dao->isBlacklisted($user->get('email'))) {
         $return[] = array(
             "Action" => "Error",
             "Error" => "Blacklist."
         );
     } else {
 
-        $usuario_dao = new UsuarioDAO;
+        $userDAO = new UserDAO;
 
-        $result = $usuario_dao->getUserByEmail(trim($usuario->get('email')));
+        $result = $userDAO->getUserByEmail(trim($user->get('email')));
         if ($result) {
             $return[] = array(
                 "Action" => "Error",
                 "Error" => "Seu e-mail já está cadastrado em nosso sistema."
             );
         } else {
-            if ($usuario->get('email') == ADMIN_EMAIL) {
-                $usuario->set('privilegio', 'ADM');
+            if ($user->get('email') == ADMIN_EMAIL) {
+                $user->set('role', 'ADM');
             }
 
-            $result = $usuario_dao->insert($usuario);
+            $result = $userDAO->insert($user);
             if (!$result) {
                 $return[] = array(
                     "Action" => "Error",
                     "Error" => "Problemas ao realizar seu cadastro. Por favor, tente novamente."
                 );
             } else {
-                $user_id = $usuario_dao->select("Usuario",array('id'),"email = '".$usuario->get('email')."'");
+                $user_id = $userDAO->select("User",array('id'),"email = '".$user->get('email')."'");
                 $user_id = $user_id->get('id');
                 $_SESSION['user_id'] = $user_id;
 

@@ -18,12 +18,12 @@
                     <?php if (isset($_SESSION['user_id']) && !is_null($_SESSION['user_id']) && "" != $_SESSION['user_id']) : ?>
                     <div id="info" class="fright">
                         <?php
-                            $userDAO = new UsuarioDAO;
+                            $userDAO = new UserDAO;
                             $user = $userDAO->getUserById($_SESSION['user_id']);
                         ?>
                         <p><?=$user->get('email')?></p>
                         <p class="fright" style="line-height:15px; vertical-align:top;">
-                            <a href="<?=APP_URL?>/usuario/atualizar">Alterar Cadastro</a>&nbsp;&nbsp;&nbsp;
+                            <a href="<?=APP_URL?>/user/atualizar">Alterar Cadastro</a>&nbsp;&nbsp;&nbsp;
                             <a href="<?=APP_URL?>/logout">Sair</a>
                         </p>
                     </div>

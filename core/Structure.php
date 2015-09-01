@@ -43,9 +43,9 @@ class Structure {
                 Structure::redir('/');
             }
         } else {
-            $usuario_dao = new UsuarioDAO;
-            $usuario = $usuario_dao->getUserById($_SESSION['user_id']);
-            if (!$usuario) {
+            $userDAO = new UserDAO;
+            $user = $userDAO->getUserById($_SESSION['user_id']);
+            if (!$user) {
                 
                 if ($verbose) {
                     Structure::redirWithMessage("Você não foi encontrado no sistema.","/");
@@ -53,16 +53,16 @@ class Structure {
                     Structure::redir('/');
                 }
             } else {
-                return $usuario;
+                return $user;
             }
         }
     }
 
     public static function verifySpecificRole($role) {
-        $usuario = Structure::verifySession();
+        $user = Structure::verifySession();
 
-        if ($usuario->get('privilegio') == $role) {
-            return $usuario;
+        if ($user->get('role') == $role) {
+            return $user;
         }
 
         Structure::redirWithMessage("Area restrita.", "/"); //TODO: Adicionar acento

@@ -1,35 +1,35 @@
 <?php
-    $usuario_old = Structure::verifySession();
+    $userOld = Structure::verifySession();
     $return = array();
 
-    $usuario = DataBinder::bind($_POST, 'Usuario');
+    $user = DataBinder::bind($_POST, 'User');
 
-    $blacklist_dao = new BlacklistDAO;
+    $blacklistDAO = new BlacklistDAO;
 
-    if ($blacklist_dao->isBlacklisted($usuario->get('email'))) {
+    if ($blacklistDAO->isBlacklisted($user->get('email'))) {
          $return[] = array(
             "Action" => "Error",
             "Error" => "O e-mail escolhido não pode ser utilizado nesse sistema. ".Structure::dashboardLink()
         );
     } else {
         $os_que_mudaram = array();
-        foreach($usuario_old->props() as $key => $val) {
-            if (!in_array($key, array('sys_type', 'sys_tablename', 'sys_validation', 'id', 'senha', 'dt_ultimo_login', 'dt_registro'))) {
-                if ($val != $usuario->get($key)) {
+        foreach($userOld->props() as $key => $val) {
+            if (!in_array($key, array('sys_type', 'sys_tablename', 'sys_validation', 'id', 'password', 'dt_last_login', 'dt_register'))) {
+                if ($val != $user->get($key)) {
                     $os_que_mudaram[] = $key;
                 }
             }
         }
 
-        if ($_POST['Usuario-senha'] != "") {
-            $os_que_mudaram[] = 'senha';
-            $usuario->set('senha', md5($usuario->get('senha')));
+        if ($_POST['User-password'] != "") {
+            $os_que_mudaram[] = 'password';
+            $user->set('password', md5($user->get('password')));
         }
 
-        $usuario_dao = new UsuarioDAO;
+        $userDAO = new UserDAO;
 
         if (sizeof($os_que_mudaram) > 0) {
-            $result = $usuario_dao->updateWithFields($usuario, $os_que_mudaram, ('id = '.$usuario_old->get('id')));
+            $result = $userDAO->updateWithFields($user, $os_que_mudaram, ('id = '.$userOld->get('id')));
              if (!$result) {
                 $return[] = array(
                     "Action" => "Error",

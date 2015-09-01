@@ -41,7 +41,7 @@ Every column of the table in the DB should have a property using the same name
 inside the Model class. The Model class should have a constant with the tablename (sys_tablename),
 a array "type" which has the datatype for every property of the Model
 ($sys_type['property\_name'] = 'type'; use 'int', 'str' or 'date'). Some other
-methods should be implemented. Use class Usuario as example.
+methods should be implemented. Use class User as example.
 
 ### DataBinding
 For databinding, set attribute "name" of the inputs using the pattern
@@ -51,7 +51,7 @@ On server-side, use the method bind(str $classname, $\_POST) from the class
 DataBinding which creates a new VO and binds the values on it.
 
 ### Examples
-Use Model class "Usuario" and user subscription as an example.
+Use Model class "User" and user subscription as an example.
 
 ## Notes
 * Created for Apache HTTP Server 2

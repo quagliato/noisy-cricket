@@ -1,27 +1,26 @@
 <?php
+    $user = DataBinder::bind($_POST, 'User');
+    $password = md5($user->get('password'));
 
-    $usuario = DataBinder::bind($_POST, 'Usuario');
-    $senha = md5($usuario->get('senha'));
+    $userDAO = new UserDAO;
 
-    $usuario_dao = new UsuarioDAO;
-
-    $usuario = $usuario_dao->getUserByEmail(trim($usuario->get('email')));
+    $user = $userDAO->getUserByEmail(trim($user->get('email')));
 
     $return = array();
-    if (!$usuario) {
+    if (!$user) {
         $return[] = array(
             'Action' => 'Error',
             'Error' => 'Seu e-mail não está cadastrado em nosso sistema.'
         );
     } else {
-        if ($usuario->get('senha') == $senha) {
+        if ($user->get('password') == $password) {
 
             session_start();
-            $_SESSION['user_id'] = $usuario->get('id');
+            $_SESSION['user_id'] = $user->get('id');
 
             $strdate = date('Y-m-d H:i:s');
-            $usuario->set('dt_ultimo_login', $strdate);
-            $usuario_dao->updateWithFields($usuario, array('dt_ultimo_login'), ("id = ".$usuario->get('id')));
+            $user->set('dt_last_login', $strdate);
+            $userDAO->updateWithFields($user, array('dt_last_login'), ("id = ".$user->get('id')));
 
             $return[] = array(
                 'Action' => 'Redir',
