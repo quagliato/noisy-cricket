@@ -1,8 +1,8 @@
 <?php
-  include_once("app.php");
-  include_once("config.php");
   include_once("custom/custom_app.php");
   include_once("custom/custom_urls.php");
+  include_once("app.php");
+  include_once("config.php");
   include_once("urls.php");
 
   if (DEBUG !== false) {
