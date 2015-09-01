@@ -10,12 +10,10 @@ class Filler {
     public static function fill($rs, $classname) {
         $array = array();
 
-        while ($field_data = mysql_fetch_array($rs)) { 
+        while ($field_data = $rs->fetch_array()) {
             $obj = new $classname;
             // Iterate resultset columns.
-            for ($i = 0; $i < mysql_num_fields($rs); $i++) {
-                // Gets the name of the column.
-                $field = mysql_fetch_field($rs, $i);
+            while ($field = $rs->fetch_field()) {
                 
                 // Sets the value from the resultset to the property with the
                 // same name.
@@ -24,7 +22,7 @@ class Filler {
                 } else {
                     $obj->set($field->name, $field_data[$field->name]);
                 }
-                
+
             }
             $array[] = $obj;
         }
