@@ -1,29 +1,34 @@
-<?php Structure::header(); ?>
-        <main>
-            <header class="center">
-                <h1>Login</h1>
-            </header>
-            <section class="center">
-                <form action="<?=APP_URL?>/login"  method="post" class="new_submit login left">
-                    <div class="input_line">
-                        <div class="input_container full last">
-                            <label for="email">Email</label>
-                            <input name="Usuario-email" type="text" id="email" required="required" placeholder="usuario@servidor.tld">
-                        </div>
-                    </div>
+<?php
+  include_once("app.php");
+  include_once("config.php");
+  include_once("custom/custom_urls.php");
+  include_once("urls.php");
 
-                    <div class="input_line">
-                        <div class="input_container full last">
-                            <label for="senha">Senha</label>
-                            <input name="Usuario-senha" type="password" id="senha" required="required">
-                        </div>
-                    </div>
+  define('REQUEST_URI', $_SERVER['REQUEST_URI']);
 
-                    <p><input type="submit" value="Entrar" class="positive fright"/></p>
+  $dbcon = new DBStuff;
 
-                    <p><a href="lost_password">Esqueceu a senha?</a></p>
-                    <p><a href="<?=APP_URL?>/usuario/cadastrar">Ainda não tem cadastro? Clique aqui.</a></p>
-                </form>
-            </section>
-        </main>
-<?php Structure::footer(); ?>
+  if (!$dbcon->testDB()) {
+    include_once("view/db_problems.php");
+
+  } else {
+    if(strpos(REQUEST_URI, '?') != 0){
+      $request_uri_no_param = substr(REQUEST_URI, 0, strpos(REQUEST_URI, '?'));
+    }else{
+      $request_uri_no_param = REQUEST_URI;
+    }
+
+    $found = false;
+    foreach ($urlpatterns as $friendly => $actual) {
+      $friendly = APP_DIR.$friendly;
+
+      if ($request_uri_no_param == $friendly) {
+        $found = true;
+        include_once($actual);
+        exit();
+      }
+    }
+    if (!$found)
+      include_once("view/404.php");
+  }
+?>
