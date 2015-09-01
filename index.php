@@ -18,17 +18,53 @@
       $request_uri_no_param = REQUEST_URI;
     }
 
-    $found = false;
-    foreach ($urlpatterns as $friendly => $actual) {
-      $friendly = APP_DIR.$friendly;
-
-      if ($request_uri_no_param == $friendly) {
-        $found = true;
-        include_once($actual);
-        exit();
+    if (STATIC_FILES) {
+      // We suggest that you move this rules to you webserver config file
+      $staticFiles = array();
+      if (preg_match_all('~(js|css|html|txt|svg|ico|gif|jpg|png|pdf|otf|ttf|eot|woff|woff2)$~', $request_uri_no_param, $staticFiles)) {
+        switch ($staticFiles[0][0]) {
+          case "css":
+          case "js":
+          case "txt":
+          case "html":
+          case "svg":
+            header("Content-type: text/".$staticFiles[0][0]);
+            echo file_get_contents(substr(REQUEST_URI, 1));
+            break;
+          case "ico":
+          case "gif":
+          case "jpg":
+          case "png":
+          case "pdf":
+          case "otf":
+          case "eot":
+            header("Content-type: application/vnd.ms-fontobject");
+            echo file_get_contents(substr(REQUEST_URI, 1));
+            break;
+          case "ttf":
+            header("Content-type: application/x-font-ttf");
+            echo file_get_contents(substr(REQUEST_URI, 1));
+            break;
+          case "woff":
+            header("Content-type: application/font-woff");
+            echo file_get_contents(substr(REQUEST_URI, 1));
+            break;
+          case "woff2":
+            header("Content-type: application/font-woff");
+            echo file_get_contents(substr(REQUEST_URI, 1));
+            break;
+        }
+        exit(0);
       }
     }
-    if (!$found)
+
+    if(!empty(APP_DIR)) $request_uri_no_param = strtr($request_uri_no_param,array(APP_DIR=>''));
+    if(isset($urlpatterns[$request_uri_no_param])) {
+      $actual = $urlpatterns[$request_uri_no_param];
+      include_once($actual);
+    } else {
       include_once("view/404.php");
+    }
+
   }
 ?>

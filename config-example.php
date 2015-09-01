@@ -39,6 +39,9 @@
     // Defines if database will store UTF-8 encoded data
     define('UTF8ENCODED', true);
 
+    // noisy-cricket will be responsible for delivering static files?
+    define('STATIC_FILES', true);
+
     // DB Settings
     define('DB_HOST', '');
     define('DB_USER', '');
