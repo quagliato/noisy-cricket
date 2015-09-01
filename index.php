@@ -1,8 +1,16 @@
 <?php
   include_once("app.php");
   include_once("config.php");
+  include_once("custom/custom_app.php");
   include_once("custom/custom_urls.php");
   include_once("urls.php");
+
+  if (DEBUG !== false) {
+    error_reporting(E_ERROR);
+    ini_set("display_errors", 1);
+    ini_set('memory_limit', '-1');
+    set_time_limit(3600);
+  }
 
   define('REQUEST_URI', $_SERVER['REQUEST_URI']);
 
