@@ -4,6 +4,9 @@
     // *** ATENTION ***
     // THIS FILE SHOULD BE RENAMED TO config.php
 
+    // DEBUG
+    define('DEBUG', false);
+
     // The directory of the domain where app is running;
     // If it is running on root domain, leave it blank.
     define('APP_DIR', '/noisy-cricket');
@@ -28,6 +31,9 @@
     // The same, but for failsafe
     define('FILES_DIR_FAILSAFE', '/full/path/to/dir/failsafe/');
 
+    // ALL activity of core can be logged, specify the filename here
+    define('LOG_FILE', '__general.log');
+
     // Maximun filesize for uploaded files
     define('MAX_FILESIZE', '50MB');
     // Defines if database will store UTF-8 encoded data
@@ -39,12 +45,12 @@
     define('DB_PASS', '');
     define('DB_NAME', '');
 
+    // Memcache Settings
+    // Leave this setting blank to not use memcache
+    define('MEMCACHE_ENDPOINT', '');
+
     // THEME DEFINITION
     define('THEME', 'default');
-
-    // Default SQL log filename (with path, if you want).
-    // ALL SQL activity is logged.
-    define('SQL_LOG_FILENAME', 'sql.log');
 
     // Default maximum size for log files befor compact it.
     define('DEFAULT_LOG_MAX_FILESIZE', 1024000);  // 1MB in B
