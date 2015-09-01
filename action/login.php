@@ -15,8 +15,7 @@
     } else {
         if ($user->get('password') == $password) {
 
-            session_start();
-            $_SESSION['user_id'] = $user->get('id');
+            setcookie('user_id',$user->get('id'),0,'/');
 
             $strdate = date('Y-m-d H:i:s');
             $user->set('dt_last_login', $strdate);

@@ -2,14 +2,12 @@
 
     $return = array();
 
-    session_start();
-    if(isset($_SESSION['user_id'])) {
-        unset($_SESSION['user_id']);
+    if(isset($_COOKIE['user_id'])) {
+        setcookie('user_id', '', (time()-1000), '/');
         $return[] = array(
             "Action" => "Error",
             "Error" => "Já existe usuário logado. Tente novamente, por favor. Por favor, tente novamente."
         );
-
     }
 
     $userDAO = new UserDAO;
@@ -49,7 +47,7 @@
             } else {
                 $user_id = $userDAO->select("User",array('id'),"email = '".$user->get('email')."'");
                 $user_id = $user_id->get('id');
-                $_SESSION['user_id'] = $user_id;
+                setcookie('user_id',$user_id,0,'/');
 
                 $return[] = array(
                     "Action" => "Message",

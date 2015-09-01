@@ -22,11 +22,7 @@ class Structure {
     }
 
     public static function verifySession($where2go = false, $values = false, $verbose = true) {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_COOKIE['user_id'])) {
             if ($where2go) {
                 $where2goAux = $where2go."?";
                 if ($values) {
@@ -35,7 +31,7 @@ class Structure {
                     }
                 }
                 
-                $_SESSION['OPENEVENT_goto'] = $where2goAux;
+                setcookie('noisy-cricket_goto',$where2goAux->get('id'),0,'/');
             }
             if ($verbose) {
                 Structure::redirWithMessage("Não se esqueça de fazer login ou se cadastrar.", '/');
@@ -44,7 +40,7 @@ class Structure {
             }
         } else {
             $userDAO = new UserDAO;
-            $user = $userDAO->getUserById($_SESSION['user_id']);
+            $user = $userDAO->getUserById($_COOKIE['user_id']);
             if (!$user) {
                 
                 if ($verbose) {

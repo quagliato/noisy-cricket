@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    if(isset($_SESSION['user_id'])) unset($_SESSION['user_id']);
+    if(isset($_COOKIE['user_id'])) setcookie('user_id', '', (time()-1000), '/');
 
     Structure::header();
 ?>

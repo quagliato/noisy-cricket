@@ -34,9 +34,8 @@ class Utils {
     public static function defineLanguage($__GET) {
         $lang = "pt";
 
-        session_start();
-        if (isset($_SESSION['lang'])) {
-            $lang = $_SESSION['lang'];
+        if (isset($_COOKIE['lang'])) {
+            $lang = $_COOKIE['lang'];
         }
 
         if (array_key_exists("lang", $__GET)) {
@@ -45,8 +44,7 @@ class Utils {
             if ($lang != "es" && $lang != "pt") {
                 $lang = "pt";
             }
-            
-            $_SESSION['lang'] = $lang;
+            setcookie('lang',$lang,0,'/');
         }
 
         return $lang;
