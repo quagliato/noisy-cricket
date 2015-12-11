@@ -517,3 +517,37 @@ header #topbanner{
     padding: 10px;
     width: 100%;
 }
+
+/******************************************************************************/
+/* PROCESSING */
+
+#processing-layer{
+    background: rgba(255, 255, 255, 0.85);
+    display: none;
+    height: 100%;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 99;
+}
+
+#processing-layer #content{
+    color: #000000;
+    height: 100px;
+    margin: -50px -100px 0 0;
+    position: fixed;
+    right: 50%;
+    text-align: center;
+    top: 50%;
+    width: 200px;
+}
+
+#processing-layer #content #icon{
+    font-size: 50px;
+}
+
+#processing-layer #content #text{
+    font-size: 20px;
+    font-weight: 300;
+}
