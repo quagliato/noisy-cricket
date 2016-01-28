@@ -25,6 +25,10 @@ function setSubmitEvents() {
 
         openProcessing();
 
+        $(this).find('input').each(function(){
+            $(this).attr("disabled", "disabled");
+        });
+
         var values = bindData($(this));
         if (!values) {
             alert('NENHUM VALOR!');

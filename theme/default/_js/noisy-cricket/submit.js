@@ -10,9 +10,13 @@
     var success = function(data){
         var result = JSON.parse(data);
 
+        var error = false;
+
         result.forEach(function(entry){
             var originalAction = entry['Action'];
             var action = originalAction.toLowerCase();
+
+            if (action == 'error') error = true;
 
             switch (action){
                 case 'message':
@@ -27,6 +31,12 @@
                     break;
             } // switch end\
         }); // iteration end
+
+        if (error) {
+            $(this).find('input').each(function(){
+                $(this).removeAttr("disabled");
+            });
+        }
 
         closeProcessing();
     } // success end
